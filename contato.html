@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contato — Aphex Lab</title>
+<link rel="icon" href="assets/img/brand/logo-dark-bg.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<div class="page-hero">
+  <div class="container reveal">
+    <div class="breadcrumb"><a href="index.html">Início</a><span class="sep">·</span><span class="current">Contato</span></div>
+    <h1>Contato</h1>
+    <p>Dúvidas sobre produtos, pedidos ou suporte de configuração? Fale com o nosso time.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container contact-grid">
+    <div class="reveal">
+      <div class="contact-info-card">
+        <h4>E-mail</h4>
+        <p>suporte@aphexlab.com</p>
+      </div>
+      <div class="contact-info-card">
+        <h4>Atendimento</h4>
+        <p>Segunda a sexta, 9h às 18h (horário de Brasília)</p>
+      </div>
+      <div class="contact-info-card">
+        <h4>Suporte de Configuração</h4>
+        <p>Fazemos todo o setup do seu sistema de tracking com você, do unboxing à primeira calibração no SteamVR / SlimeVR.</p>
+      </div>
+      <div class="contact-info-card">
+        <h4>Envios</h4>
+        <p>Despachamos para todo o Brasil. Prazos calculados na página de cada produto.</p>
+      </div>
+    </div>
+
+    <div class="reveal" style="--d:1">
+      <div class="section-title">Envie uma Mensagem</div>
+      <form id="contact-form">
+        <div class="form-field">
+          <label for="name">Nome</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="form-field">
+          <label for="subject">Assunto</label>
+          <input type="text" id="subject" placeholder="Ex: Dúvida sobre Full Body X">
+        </div>
+        <div class="form-field">
+          <label for="message">Mensagem</label>
+          <textarea id="message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Enviar Mensagem</button>
+        <p class="form-note">Respondemos em até 1 dia útil.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/products.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  mountLayout("contato.html");
+  document.getElementById("contact-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    showToast("Mensagem enviada! Vamos te responder em breve.");
+    e.target.reset();
+  });
+</script>
+</body>
+</html>

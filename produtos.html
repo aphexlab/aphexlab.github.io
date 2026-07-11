@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produtos — Aphex Lab</title>
+<link rel="icon" href="assets/img/brand/logo-dark-bg.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<div class="page-hero">
+  <div class="container reveal">
+    <div class="breadcrumb"><a href="index.html">Início</a><span class="sep">·</span><span class="current">Produtos</span></div>
+    <h1>Produtos</h1>
+    <p>Sistemas de rastreamento corporal e acessórios para realidade virtual.</p>
+  </div>
+</div>
+
+<section class="section-tight">
+  <div class="container catalog-layout">
+    <aside class="filters reveal">
+      <div class="filter-group">
+        <h3>Categoria</h3>
+        <ul id="filter-cat">
+          <li><button class="filter-link active" data-cat="todos">Todos</button></li>
+          <li><button class="filter-link" data-cat="Full Body Trackers">Full Body Trackers</button></li>
+          <li><button class="filter-link" data-cat="Acessórios">Acessórios</button></li>
+        </ul>
+      </div>
+      <div class="filter-group">
+        <h3>Linha</h3>
+        <ul id="filter-line">
+          <li><button class="filter-link active" data-line="todas">Todas</button></li>
+          <li><button class="filter-link" data-line="Full Body Y">Full Body Y — LSM6DSR</button></li>
+          <li><button class="filter-link" data-line="Full Body X">Full Body X — ICM45686</button></li>
+          <li><button class="filter-link" data-line="Mouthtracker">Mouthtracker</button></li>
+        </ul>
+      </div>
+      <div class="filter-group">
+        <h3>Ordenar por</h3>
+        <ul id="filter-sort">
+          <li><button class="filter-link active" data-sort="relevancia">Mais recentes</button></li>
+          <li><button class="filter-link" data-sort="menor">Menor preço</button></li>
+          <li><button class="filter-link" data-sort="maior">Maior preço</button></li>
+        </ul>
+      </div>
+    </aside>
+
+    <div>
+      <div class="catalog-toolbar">
+        <span id="result-count"></span>
+      </div>
+      <div class="products-grid" id="products-grid"></div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/products.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  mountLayout("produtos.html");
+
+  const state = { cat: "todos", line: "todas", sort: "relevancia" };
+
+  function applyUrlParams(){
+    const params = new URLSearchParams(location.search);
+    if (params.get("cat")) state.cat = params.get("cat");
+    if (params.get("linha")) state.line = params.get("linha");
+
+    document.querySelectorAll("#filter-cat button").forEach(b =>
+      b.classList.toggle("active", b.dataset.cat === state.cat));
+    document.querySelectorAll("#filter-line button").forEach(b =>
+      b.classList.toggle("active", b.dataset.line === state.line));
+  }
+
+  function render(){
+    let list = PRODUCTS.slice();
+    if (state.cat !== "todos") list = list.filter(p => p.category === state.cat);
+    if (state.line !== "todas") list = list.filter(p => p.line === state.line);
+    if (state.sort === "menor") list.sort((a,b) => a.price - b.price);
+    if (state.sort === "maior") list.sort((a,b) => b.price - a.price);
+
+    renderProductGrid(document.getElementById("products-grid"), list);
+    document.getElementById("result-count").textContent =
+      `${list.length} produto${list.length === 1 ? "" : "s"} encontrado${list.length === 1 ? "" : "s"}`;
+  }
+
+  document.querySelectorAll("#filter-cat button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#filter-cat button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      state.cat = btn.dataset.cat;
+      render();
+    });
+  });
+  document.querySelectorAll("#filter-line button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#filter-line button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      state.line = btn.dataset.line;
+      render();
+    });
+  });
+  document.querySelectorAll("#filter-sort button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#filter-sort button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      state.sort = btn.dataset.sort;
+      render();
+    });
+  });
+
+  applyUrlParams();
+  render();
+</script>
+</body>
+</html>

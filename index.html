@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aphex Lab — Laboratório de Hardware</title>
+<meta name="description" content="Aphex Lab é um laboratório de hardware especializado em tecnologia de captura de movimento (mocap) e dispositivos inovadores para realidade virtual.">
+<link rel="icon" href="assets/img/brand/logo-dark-bg.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<section class="hero">
+  <div class="hero-decor" aria-hidden="true"></div>
+  <span class="hero-ring ring-2" aria-hidden="true"></span>
+  <span class="hero-ring ring-1" aria-hidden="true"></span>
+  <div class="container hero-content">
+    <div class="hero-badge reveal">
+      <img src="assets/img/brand/logo-dark-bg.png" alt="Aphex Lab">
+    </div>
+    <div class="eyebrow reveal" style="--d:1">Laboratório de Hardware</div>
+    <h1 class="reveal" style="--d:2">Performance real no mundo físico, <span class="accent">levada ao mundo virtual.</span></h1>
+    <p class="reveal" style="--d:3">Sistemas de rastreamento corporal (full body tracking) e captura de expressões faciais para realidade virtual. Engenharia, precisão e design em cada tracker.</p>
+    <div class="hero-actions reveal" style="--d:4">
+      <a href="produtos.html" class="btn btn-primary">Ver Produtos</a>
+      <a href="contato.html" class="btn btn-outline">Falar com o Suporte</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container about-grid">
+    <div class="reveal">
+      <div class="section-title">Sobre a Marca</div>
+      <p>A Aphex Lab é um laboratório de hardware especializado em tecnologia de captura de movimento (mocap) e dispositivos inovadores para criadores, desenvolvedores e entusiastas.</p>
+      <p>Unimos engenharia, precisão e design para entregar performance real no mundo físico — do chip ao case impresso, cada tracker é pensado para desaparecer no seu corpo e aparecer no seu avatar.</p>
+      <a href="produtos.html" class="btn btn-outline">Conhecer a Linha Full Body</a>
+    </div>
+    <div class="reveal" style="--d:1">
+      <img src="assets/img/trackers/tracker-pair-1.png" alt="Tracker Aphex Lab" style="border:1px solid var(--black-2); border-radius:2px;">
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="container">
+    <div class="section-title reveal">O que nos move</div>
+    <div class="values-row">
+      <div class="value-card">
+        ${'' /* icons injected via JS below */}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title reveal">Produtos em Destaque</div>
+    <div class="products-grid" id="featured-grid"></div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="container">
+    <div class="section-title reveal">Feito para o Corpo Inteiro</div>
+    <div class="about-grid">
+      <div class="reveal">
+        <img src="assets/img/trackers/mouthtracker-2.png" alt="Mouthtracker Aphex Lab" style="border:1px solid var(--black-2); border-radius:2px;">
+      </div>
+      <div class="reveal" style="--d:1">
+        <p>Além do full body tracking, a Aphex Lab desenvolve acessórios que ampliam a sua presença em VR — como o Mouthtracker Expressions, que captura expressões faciais em tempo real e as leva direto ao seu avatar.</p>
+        <p>Todo o catálogo é desenhado para funcionar em conjunto: mesma identidade de hardware, mesmo padrão de qualidade e o mesmo suporte de ponta a ponta.</p>
+        <a href="produto.html?slug=mouthtracker-expressions" class="btn btn-outline">Ver Mouthtracker Expressions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/products.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  mountLayout("index.html");
+
+  document.querySelector(".values-row").innerHTML = `
+    <div class="value-card reveal" style="--d:0">
+      ${ICONS.target}
+      <h4>Precisão</h4>
+      <p>Tracking fiel ao seu movimento real, sessão após sessão.</p>
+    </div>
+    <div class="value-card reveal" style="--d:1">
+      ${ICONS.chip}
+      <h4>Tecnologia</h4>
+      <p>Chips de última geração selecionados a dedo para cada linha.</p>
+    </div>
+    <div class="value-card reveal" style="--d:2">
+      ${ICONS.layers}
+      <h4>Inovação</h4>
+      <p>Hardware e software pensados juntos, do zero.</p>
+    </div>
+    <div class="value-card reveal" style="--d:3">
+      ${ICONS.flask}
+      <h4>Experimentação</h4>
+      <p>Cada produto nasce de testes reais em ambiente real.</p>
+    </div>
+  `;
+
+  renderProductGrid(document.getElementById("featured-grid"), PRODUCTS.slice(0, 4));
+  refreshReveal();
+</script>
+</body>
+</html>

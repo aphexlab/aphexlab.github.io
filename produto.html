@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Produto — Aphex Lab</title>
+<link rel="icon" href="assets/img/brand/logo-dark-bg.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<div class="container">
+  <div class="breadcrumb" id="breadcrumb"></div>
+</div>
+
+<section class="section-tight" style="padding-top:0;">
+  <div class="container">
+    <div class="product-detail" id="product-detail"></div>
+
+    <div class="product-description reveal" id="product-description"></div>
+
+    <div class="related" id="related-section">
+      <div class="section-title reveal">Produtos Similares</div>
+      <div class="products-grid" id="related-grid"></div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/products.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  mountLayout("produtos.html");
+
+  const slug = new URLSearchParams(location.search).get("slug") || PRODUCTS[0].slug;
+  const product = getProductBySlug(slug) || PRODUCTS[0];
+  let activeImage = imgPath(product, product.images[0]);
+
+  document.getElementById("page-title").textContent = `${product.name} — Aphex Lab`;
+
+  document.getElementById("breadcrumb").innerHTML = `
+    <a href="index.html">Início</a><span class="sep">·</span>
+    <a href="produtos.html">Produtos</a><span class="sep">·</span>
+    <span class="current">${product.name}</span>
+  `;
+
+  function renderGallery(){
+    return `
+      <div class="reveal">
+        <div class="gallery-main">
+          <img id="gallery-main-img" src="${activeImage}" alt="${product.name}">
+        </div>
+        <div class="gallery-thumbs">
+          ${product.images.map((img, i) => `
+            <button data-img="${imgPath(product, img)}" class="${imgPath(product, img) === activeImage ? 'active' : ''}">
+              <img src="${imgPath(product, img)}" alt="${product.name} - imagem ${i+1}">
+            </button>
+          `).join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderInfo(){
+    return `
+      <div class="product-info reveal" style="--d:1">
+        <span class="cat">${product.category}</span>
+        <h1>${product.name}</h1>
+        <div class="price-block">
+          ${product.oldPrice ? `<span class="price-old" style="font-size:15px;">${formatBRL(product.oldPrice)}</span>` : ""}
+          <span class="price">${formatBRL(product.price)}</span>
+        </div>
+        <div class="installments">ou ${installmentText(product.price)} sem juros</div>
+
+        ${product.stockWarning ? `<div class="stock-alert">⚠ Atenção, última peça!</div>` : ""}
+
+        <div class="qty-row">
+          <div class="qty-selector">
+            <button id="qty-minus">−</button>
+            <input type="text" id="qty-input" value="1" readonly>
+            <button id="qty-plus">+</button>
+          </div>
+        </div>
+
+        <div class="buy-actions">
+          <button class="btn btn-primary" id="add-to-cart">Adicionar ao Carrinho</button>
+          <button class="btn btn-outline" id="buy-now">Comprar Agora</button>
+        </div>
+
+        <div class="shipping-calc">
+          <h4>MEIOS DE ENVIO</h4>
+          <div class="row">
+            <input type="text" placeholder="Digite seu CEP" maxlength="9" id="cep-input">
+            <button class="btn btn-outline" id="cep-calc">Calcular</button>
+          </div>
+          <a class="link" href="https://buscacepinternet.correios.com.br/app/endereco/index.php" target="_blank" rel="noopener">Não sei meu CEP</a>
+        </div>
+
+        <div class="trust-row">
+          <div>${ICONS.truck}<span>Envio para todo o Brasil</span></div>
+          <div>${ICONS.shield}<span>Garantia Aphex Lab</span></div>
+          <div>${ICONS.headset}<span>Setup incluso no suporte</span></div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderDescription(){
+    return `
+      <h2>${product.tagline}</h2>
+      <p>${product.intro}</p>
+      <p>${product.coverage}</p>
+
+      <h3>Destaques do ${product.name.split(" - ")[0]} em ${product.chip}:</h3>
+      <ul class="highlight-list">
+        ${product.highlights.map(h => `<li><span><strong>${h.title}:</strong>${h.text}</span></li>`).join("")}
+      </ul>
+
+      <h3>Especificações Técnicas:</h3>
+      <table class="spec-table">
+        <tr><td>Chip de rastreio</td><td>${product.chip}</td></tr>
+        <tr><td>Trackers inclusos</td><td>${product.trackers}</td></tr>
+        <tr><td>Conectividade</td><td>Wifi 802.11 b/g/n</td></tr>
+        <tr><td>Faixa de frequência</td><td>2400 MHz ~ 2483.5 MHz</td></tr>
+        <tr><td>Bateria</td><td>${product.battery}</td></tr>
+        ${product.drift ? `<tr><td>Tempo estimado de drift</td><td>${product.drift}* (dependendo do modo de uso)</td></tr>` : ""}
+      </table>
+    `;
+  }
+
+  document.getElementById("product-detail").innerHTML = renderGallery() + renderInfo();
+  document.getElementById("product-description").innerHTML = renderDescription();
+  renderProductGrid(document.getElementById("related-grid"), relatedProducts(product, 4));
+  refreshReveal();
+
+  // Gallery thumbnail switching
+  document.querySelectorAll(".gallery-thumbs button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      activeImage = btn.dataset.img;
+      document.getElementById("gallery-main-img").src = activeImage;
+      document.querySelectorAll(".gallery-thumbs button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+
+  // Quantity selector
+  const qtyInput = document.getElementById("qty-input");
+  document.getElementById("qty-minus").addEventListener("click", () => {
+    qtyInput.value = Math.max(1, parseInt(qtyInput.value) - 1);
+  });
+  document.getElementById("qty-plus").addEventListener("click", () => {
+    qtyInput.value = parseInt(qtyInput.value) + 1;
+  });
+
+  // Add to cart / buy now
+  document.getElementById("add-to-cart").addEventListener("click", () => {
+    addToCart(product, parseInt(qtyInput.value));
+  });
+  document.getElementById("buy-now").addEventListener("click", () => {
+    addToCart(product, parseInt(qtyInput.value));
+  });
+
+  // Fake shipping calc
+  document.getElementById("cep-calc").addEventListener("click", () => {
+    const cep = document.getElementById("cep-input").value.trim();
+    if (cep.length < 8){ showToast("Digite um CEP válido"); return; }
+    showToast("Frete calculado: Sedex — 3 a 6 dias úteis");
+  });
+</script>
+</body>
+</html>
