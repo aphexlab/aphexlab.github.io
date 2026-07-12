@@ -306,7 +306,6 @@ const COMPAT_GAMES = [
   { name: "Resonite" },
   { name: "ChilloutVR" },
   { name: "LIV" },
-  { name: "Second Life" },
   { name: "Dance Dash" },
   { name: "Dragon Fist: VR Kung Fu" },
   { name: "Zenith: The Last City" },
@@ -336,7 +335,7 @@ function renderGameTiles(container){
   }).join("");
 }
 
-const PRO_SOFTWARE = ["Blender", "Unity", "Unreal Engine", "Godot", "VMC Protocol", "VaM · Virt-A-Mate"];
+const PRO_SOFTWARE = ["Blender", "Unity", "Unreal Engine", "Godot", "VMC Protocol", "VaM · Virt-A-Mate", "Second Life"];
 
 function renderWordmarks(container){
   if (!container) return;
