@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Central de Tutoriais — Aphex Lab</title>
+<meta name="description" content="Guias passo a passo para instalar, calibrar e configurar seus trackers Aphex Lab com o SlimeVR: instalação, drift, modo standalone, VTubing e motion capture.">
+<link rel="icon" href="assets/img/brand/logo-dark-bg.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<div class="page-hero">
+  <div class="container reveal">
+    <div class="breadcrumb"><a href="index.html">Início</a><span class="sep">·</span><span class="current">Tutoriais</span></div>
+    <h1>Central de Tutoriais</h1>
+    <p>Guias passo a passo para instalar, calibrar e tirar o máximo dos seus trackers Aphex Lab.</p>
+  </div>
+</div>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="callout reveal">
+      <strong>Primeiro passo:</strong> baixe o servidor SlimeVR (gratuito e open source) em <a href="https://slimevr.dev" target="_blank" rel="noopener">slimevr.dev</a>. É ele que recebe os dados dos seus trackers Aphex Lab e envia o rastreamento para o seu jogo ou avatar.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title reveal">Escolha seu Produto</div>
+    <div class="precheck-grid cols-3">
+      <a href="produtos.html?linha=Full+Body+Y" class="precheck-card reveal">
+        <h4>Full Body Y — LSM6DSR</h4>
+        <p>Linha de melhor custo-benefício. Setup, calibração e dicas específicas do chip LSM6DSR.</p>
+        <span class="link-arrow">Ver produtos →</span>
+      </a>
+      <a href="produtos.html?linha=Full+Body+X" class="precheck-card reveal" style="--d:1">
+        <h4>Full Body X — ICM45686</h4>
+        <p>Linha de alta precisão. Setup, calibração e dicas específicas do chip ICM45686.</p>
+        <span class="link-arrow">Ver produtos →</span>
+      </a>
+      <a href="produto.html?slug=mouthtracker-expressions" class="precheck-card reveal" style="--d:2">
+        <h4>Mouthtracker Expressions</h4>
+        <p>Instalação no headset e configuração de expressões faciais para o seu avatar.</p>
+        <span class="link-arrow">Ver produto →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="container" style="max-width:840px;">
+    <div class="section-title reveal">Guias Passo a Passo</div>
+
+    <div class="faq-group reveal">
+      <details class="faq-item" open>
+        <summary><span>Instalação do Servidor SlimeVR (Windows, Linux e macOS)</span><span class="chevron"></span></summary>
+        <p class="faq-answer">Baixe o instalador oficial em slimevr.dev e abra o SlimeVR Server. Ligue seus trackers Aphex Lab e conecte-os à sua rede Wi-Fi de 2.4GHz — o pareamento é feito uma única vez, direto pelo tracker. Depois de conectados, todos aparecem automaticamente na lista de dispositivos do SlimeVR Server, prontos para calibração.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>Calibração Inicial e Correção de Drift</span><span class="chevron"></span></summary>
+        <p class="faq-answer">Na primeira calibração, fique parado em pé, com os braços ao lado do corpo, e siga o assistente do SlimeVR Server. Sempre que notar o rastreamento saindo do lugar (drift), repita uma calibração rápida — leva poucos segundos e resolve a maioria dos casos. Movimentos bruscos e prolongados tendem a acelerar o drift, então recalibre sempre que perceber desalinhamento.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>Configuração de Altura, Offsets e Proporções</span><span class="chevron"></span></summary>
+        <p class="faq-answer">O assistente de configuração do SlimeVR pede sua altura real e ajusta automaticamente as proporções do corpo (tronco, pernas, pés). Reserve um espaço livre de cerca de 2x2 metros para o assistente calcular as proporções com mais precisão.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>Modo Standalone (sem PC) em Quest 2/3/3S/Pro e Pico 4/4 Pro</span><span class="chevron"></span></summary>
+        <p class="faq-answer">O servidor SlimeVR também roda direto no headset, sem precisar de computador. Instale o app do SlimeVR no seu Quest ou Pico, conecte-o à mesma rede Wi-Fi dos trackers e siga o mesmo processo de calibração — tudo dentro do headset.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>Integração com VRChat, SteamVR, Resonite e ChilloutVR</span><span class="chevron"></span></summary>
+        <p class="faq-answer">O SlimeVR se conecta ao SteamVR através de um driver OpenVR, então qualquer jogo que já suporte full body tracking via SteamVR — como VRChat, Resonite e ChilloutVR — reconhece automaticamente os trackers. Basta abrir o SteamVR com o SlimeVR Server rodando e ativar o full body tracking no menu do seu avatar.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>VTubing (OSC/VMC) e Motion Capture (Blender, Unity, Unreal, Godot)</span><span class="chevron"></span></summary>
+        <p class="faq-answer">Para VTubing e mocap, ative a exportação via OSC ou VMC nas configurações do SlimeVR Server e aponte seu software (VSeeFace, VNyan, Blender, Unity, Unreal, Godot) para receber os dados. O rastreamento corporal completo passa a alimentar o seu avatar 3D em tempo real.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>Troubleshooting: Wi-Fi, Firmware e Bateria</span><span class="chevron"></span></summary>
+        <p class="faq-answer">Sinal fraco costuma ser a causa mais comum de instabilidade — mantenha os trackers na mesma faixa de 2.4GHz e, se possível, próximos ao roteador. Atualizações de firmware são feitas direto pelo SlimeVR Server, que avisa quando há uma nova versão disponível. A bateria de cada tracker é carregada via USB-C e o LED indica o status de carga.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title reveal">Configuração por Jogo</div>
+    <p class="reveal" style="color:var(--gray); max-width:640px;">Cada jogo tem suas particularidades para ativar e calibrar o rastreamento corporal completo. Veja a lista de compatibilidade — dúvidas específicas, manda pro nosso suporte.</p>
+    <div class="pill-row reveal" style="margin-top:20px;">
+      <span class="pill">SteamVR</span>
+      <span class="pill">VRChat</span>
+      <span class="pill">Resonite</span>
+      <span class="pill">ChilloutVR</span>
+      <span class="pill">LIV</span>
+      <span class="pill pill-mod">Beat Saber · mod</span>
+      <span class="pill pill-mod">Blade &amp; Sorcery · mod</span>
+      <span class="pill pill-mod">Boneworks · mod</span>
+    </div>
+    <div class="hero-actions reveal" style="justify-content:flex-start; margin-top:28px;">
+      <a href="faq.html" class="btn btn-outline">Ver Perguntas Frequentes</a>
+      <a href="suporte.html" class="btn btn-outline">Falar com o Suporte</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/products.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  mountLayout("tutoriais.html");
+  document.querySelectorAll(".faq-item .chevron").forEach(el => { el.innerHTML = ICONS.chevronDown; });
+</script>
+</body>
+</html>

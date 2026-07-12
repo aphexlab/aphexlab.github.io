@@ -16,7 +16,10 @@ const ICONS = {
   headset: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 13a8 8 0 0 1 16 0"/><rect x="2" y="13" width="5" height="7" rx="1.5"/><rect x="17" y="13" width="5" height="7" rx="1.5"/></svg>`,
   percent: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M19 5 5 19"/><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>`,
   wifi: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8.5a17 17 0 0 1 20 0"/><path d="M5.5 12.5a12 12 0 0 1 13 0"/><path d="M9 16.5a7 7 0 0 1 6 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>`,
-  chevronDown: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>`
+  chevronDown: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>`,
+  mail: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>`,
+  message: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>`,
+  book: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>`
 };
 
 const CART_KEY = "aphexlab_cart";
@@ -125,7 +128,9 @@ function siteHeader(active){
         <ul>
           <li>${link("index.html","Início")}</li>
           <li>${link("produtos.html","Produtos")}</li>
+          <li>${link("tutoriais.html","Tutoriais")}</li>
           <li>${link("faq.html","FAQ")}</li>
+          <li>${link("suporte.html","Suporte")}</li>
           <li>${link("contato.html","Contato")}</li>
         </ul>
       </nav>
@@ -142,7 +147,9 @@ function siteHeader(active){
       <ul>
         <li>${link("index.html","Início")}</li>
         <li>${link("produtos.html","Produtos")}</li>
+        <li>${link("tutoriais.html","Tutoriais")}</li>
         <li>${link("faq.html","FAQ")}</li>
+        <li>${link("suporte.html","Suporte")}</li>
         <li>${link("contato.html","Contato")}</li>
       </ul>
     </nav>
@@ -182,6 +189,7 @@ function siteFooter(){
           <ul>
             <li><a href="index.html">Início</a></li>
             <li><a href="produtos.html">Produtos</a></li>
+            <li><a href="tutoriais.html">Tutoriais</a></li>
             <li><a href="contato.html">Contato</a></li>
           </ul>
         </div>
@@ -197,9 +205,10 @@ function siteFooter(){
         <div>
           <h4>Suporte</h4>
           <ul>
+            <li><a href="suporte.html">Central de Suporte</a></li>
             <li><a href="faq.html">Perguntas Frequentes</a></li>
+            <li><a href="tutoriais.html">Tutoriais</a></li>
             <li><a href="contato.html">Fale conosco</a></li>
-            <li><a href="contato.html">Configuração e Setup</a></li>
           </ul>
         </div>
       </div>

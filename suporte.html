@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Central de Suporte — Aphex Lab</title>
+<meta name="description" content="Central de suporte da Aphex Lab: tutoriais, perguntas frequentes, e-mail de atendimento e horário de funcionamento.">
+<link rel="icon" href="assets/img/brand/logo-dark-bg.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<div class="page-hero">
+  <div class="container reveal">
+    <div class="breadcrumb"><a href="index.html">Início</a><span class="sep">·</span><span class="current">Suporte</span></div>
+    <h1>Central de Suporte</h1>
+    <p>Estamos aqui para ajudar. Comece pelos tutoriais e pelo FAQ, ou fale direto com a gente.</p>
+  </div>
+</div>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="section-title reveal">Antes de Abrir um Chamado</div>
+    <div class="precheck-grid">
+      <a href="tutoriais.html" class="precheck-card reveal">
+        <h4>Tutoriais</h4>
+        <p>Guias completos de instalação, calibração, correção de drift, modo standalone e integração com jogos.</p>
+        <span class="link-arrow">Ver tutoriais →</span>
+      </a>
+      <a href="faq.html" class="precheck-card reveal" style="--d:1">
+        <h4>Perguntas Frequentes</h4>
+        <p>Respostas rápidas sobre compatibilidade, bateria, entrega e como o SlimeVR funciona.</p>
+        <span class="link-arrow">Ver FAQ →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="container">
+    <div class="section-title reveal">Canais Oficiais</div>
+    <div class="channel-grid">
+      <div class="channel-card reveal">
+        <span id="icon-mail"></span>
+        <h4>E-mail</h4>
+        <p>Envie sua dúvida ou problema detalhado para o nosso e-mail de atendimento.</p>
+        <a href="mailto:suporte@aphexlab.com" class="btn btn-primary">suporte@aphexlab.com</a>
+      </div>
+      <div class="channel-card reveal" style="--d:1">
+        <span id="icon-message"></span>
+        <h4>Formulário de Contato</h4>
+        <p>Prefere preencher um formulário? Sua mensagem chega direto para o nosso time.</p>
+        <a href="contato.html" class="btn btn-outline">Abrir formulário</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title reveal">Horário de Atendimento</div>
+    <div class="hours-grid">
+      <div class="hours-row reveal"><span>Segunda a sexta</span><strong>9h às 18h</strong></div>
+      <div class="hours-row reveal" style="--d:1"><span>Sábados e domingos</span><strong>Fechado</strong></div>
+    </div>
+    <p class="reveal" style="--d:2; color:var(--gray); font-size:13px; margin-top:16px;">Respondemos todo e-mail em até 1 dia útil.</p>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/products.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  mountLayout("suporte.html");
+  document.getElementById("icon-mail").innerHTML = ICONS.mail;
+  document.getElementById("icon-message").innerHTML = ICONS.message;
+</script>
+</body>
+</html>
