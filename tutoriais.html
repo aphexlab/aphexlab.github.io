@@ -101,16 +101,7 @@
   <div class="container">
     <div class="section-title reveal">Configuração por Jogo</div>
     <p class="reveal" style="color:var(--gray); max-width:640px;">Cada jogo tem suas particularidades para ativar e calibrar o rastreamento corporal completo. Veja a lista de compatibilidade — dúvidas específicas, manda pro nosso suporte.</p>
-    <div class="pill-row reveal" style="margin-top:20px;">
-      <span class="pill">SteamVR</span>
-      <span class="pill">VRChat</span>
-      <span class="pill">Resonite</span>
-      <span class="pill">ChilloutVR</span>
-      <span class="pill">LIV</span>
-      <span class="pill pill-mod">Beat Saber · mod</span>
-      <span class="pill pill-mod">Blade &amp; Sorcery · mod</span>
-      <span class="pill pill-mod">Boneworks · mod</span>
-    </div>
+    <div class="game-tile-row" id="game-tile-row" style="margin-top:24px;"></div>
     <div class="hero-actions reveal" style="justify-content:flex-start; margin-top:28px;">
       <a href="faq.html" class="btn btn-outline">Ver Perguntas Frequentes</a>
       <a href="suporte.html" class="btn btn-outline">Falar com o Suporte</a>
@@ -125,6 +116,8 @@
 <script>
   mountLayout("tutoriais.html");
   document.querySelectorAll(".faq-item .chevron").forEach(el => { el.innerHTML = ICONS.chevronDown; });
+  renderGameTiles(document.getElementById("game-tile-row"));
+  refreshReveal();
 </script>
 </body>
 </html>

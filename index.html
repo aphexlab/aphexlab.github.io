@@ -77,16 +77,40 @@
   </div>
 </section>
 
-<section>
+<section style="text-align:center;">
   <div class="container">
-    <div class="section-title reveal">Compatibilidade</div>
-    <p class="reveal" style="--d:0; color:var(--gray); max-width:640px;">Os trackers Aphex Lab rodam o servidor <strong style="color:var(--white)">SlimeVR</strong> (open source), o que garante compatibilidade com todo o ecossistema já usado pela comunidade de full body tracking.</p>
-    <div id="compat-blocks"></div>
-    <p style="color:var(--gray); font-size:12px; margin-top:28px;">* Compatibilidade depende da versão do SlimeVR e de cada jogo/aplicativo. Alguns títulos usam mods de terceiros para suportar rastreamento corporal completo.</p>
+    <div class="eyebrow reveal">Compatibilidade</div>
+    <h2 class="reveal" style="--d:1; font-size:clamp(24px,3.4vw,38px); max-width:760px; margin:14px auto 16px;">Funciona nos jogos que você já joga</h2>
+    <p class="reveal" style="--d:2; color:var(--gray); max-width:560px; margin:0 auto 36px;">Compatível com os jogos abaixo — alguns funcionam nativamente, outros com mods da comunidade.</p>
+    <div class="game-tile-row" id="game-tile-row" style="text-align:left;"></div>
   </div>
 </section>
 
 <section class="section-alt">
+  <div class="container">
+    <div id="compat-blocks"></div>
+    <p style="color:var(--gray); font-size:12px; margin-top:28px;">* Compatibilidade depende da versão do SlimeVR e de cada jogo/aplicativo. Os trackers Aphex Lab rodam o servidor <strong style="color:var(--white)">SlimeVR</strong> (open source), o que garante compatibilidade com todo o ecossistema já usado pela comunidade de full body tracking. Alguns títulos usam mods de terceiros.</p>
+  </div>
+</section>
+
+<section style="text-align:center;">
+  <div class="container">
+    <div class="eyebrow reveal">Uso Profissional</div>
+    <h2 class="reveal" style="--d:1; font-size:clamp(24px,3.4vw,34px); max-width:720px; margin:14px auto 16px;">Para Criadores, Animadores e Desenvolvedores</h2>
+    <p class="reveal" style="--d:2; color:var(--gray); max-width:560px; margin:0 auto 40px;">Faça motion capture, anime personagens e desenvolva experiências usando os trackers Aphex Lab com os softwares que você já usa.</p>
+    <div class="wordmark-row reveal" style="--d:3" id="wordmark-row"></div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="container">
+    <div class="section-title reveal">Próximos Produtos</div>
+    <p class="reveal" style="color:var(--gray); max-width:640px; margin-bottom:32px;">Estamos expandindo o catálogo. Estes produtos ainda estão em desenvolvimento — sem especificações ou preços definidos.</p>
+    <div class="roadmap-grid" id="roadmap-grid"></div>
+  </div>
+</section>
+
+<section>
   <div class="container">
     <div class="section-title reveal">Feito para o Corpo Inteiro</div>
     <div class="about-grid">
@@ -144,20 +168,7 @@
   `;
 
   document.getElementById("compat-blocks").innerHTML = `
-    <div class="compat-block reveal" style="--d:1">
-      <h4>Software e Jogos</h4>
-      <div class="pill-row">
-        <span class="pill">SteamVR</span>
-        <span class="pill">VRChat</span>
-        <span class="pill">Resonite</span>
-        <span class="pill">ChilloutVR</span>
-        <span class="pill">LIV</span>
-        <span class="pill pill-mod">Beat Saber · mod</span>
-        <span class="pill pill-mod">Blade &amp; Sorcery · mod</span>
-        <span class="pill pill-mod">Boneworks · mod</span>
-      </div>
-    </div>
-    <div class="compat-block reveal" style="--d:2">
+    <div class="compat-block reveal" style="--d:1; margin-top:0;">
       <h4>Uso Standalone (sem PC)</h4>
       <div class="pill-row">
         <span class="pill">Meta Quest 2</span>
@@ -166,18 +177,7 @@
         <span class="pill">Pico 4 / 4 Pro</span>
       </div>
     </div>
-    <div class="compat-block reveal" style="--d:3">
-      <h4>VTubing e Motion Capture</h4>
-      <div class="pill-row">
-        <span class="pill">OSC</span>
-        <span class="pill">VMC</span>
-        <span class="pill">Blender</span>
-        <span class="pill">Unity</span>
-        <span class="pill">Unreal Engine</span>
-        <span class="pill">Godot</span>
-      </div>
-    </div>
-    <div class="compat-block reveal" style="--d:4">
+    <div class="compat-block reveal" style="--d:2">
       <h4>Sistemas Operacionais</h4>
       <div class="pill-row">
         <span class="pill">Windows</span>
@@ -187,6 +187,10 @@
       </div>
     </div>
   `;
+
+  renderGameTiles(document.getElementById("game-tile-row"));
+  renderWordmarks(document.getElementById("wordmark-row"));
+  renderRoadmap(document.getElementById("roadmap-grid"));
 
   document.querySelector(".values-row").innerHTML = `
     <div class="value-card reveal" style="--d:0">

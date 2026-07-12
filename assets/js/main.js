@@ -283,6 +283,71 @@ function refreshReveal(){
   document.querySelectorAll(".reveal:not(.is-visible)").forEach(el => _revealObserver.observe(el));
 }
 
+/* ------------------------------ Compatibility tiles ------------------------------ */
+/* Styled gradient tiles instead of official box art — avoids using third-party
+   game artwork/trademarks we don't have rights to publish. */
+const COMPAT_GAMES = [
+  { name: "VRChat" },
+  { name: "Resonite" },
+  { name: "ChilloutVR" },
+  { name: "LIV" },
+  { name: "Second Life" },
+  { name: "Dance Dash" },
+  { name: "Dragon Fist: VR Kung Fu" },
+  { name: "Zenith: The Last City" },
+  { name: "Final Soccer VR" },
+  { name: "Mocap Fusion VR" },
+  { name: "Beat Saber", mod: true },
+  { name: "Blade & Sorcery", mod: true },
+  { name: "Boneworks", mod: true },
+  { name: "Minecraft", mod: true }
+];
+
+const COMPAT_PALETTE = [
+  ["#0070FF", "#001433"], ["#00C2A8", "#00291F"], ["#7C3AED", "#170733"], ["#FF3D71", "#2B0512"],
+  ["#F5A623", "#2B1B00"], ["#2ED1FF", "#001A29"], ["#8CE00A", "#122400"], ["#FF6B35", "#2B0F00"]
+];
+
+function renderGameTiles(container){
+  if (!container) return;
+  container.innerHTML = COMPAT_GAMES.map((g, i) => {
+    const [c1, c2] = COMPAT_PALETTE[i % COMPAT_PALETTE.length];
+    return `
+      <div class="game-tile reveal" style="--d:${i % 6}; background:linear-gradient(160deg, ${c1}, ${c2});">
+        ${g.mod ? `<span class="game-tile-badge">MOD</span>` : ""}
+        <span class="game-tile-name">${g.name}</span>
+      </div>
+    `;
+  }).join("");
+}
+
+const PRO_SOFTWARE = ["Blender", "Unity", "Unreal Engine", "Godot", "VMC Protocol"];
+
+function renderWordmarks(container){
+  if (!container) return;
+  container.innerHTML = PRO_SOFTWARE.map(name => `<span class="wordmark">${name}</span>`).join("");
+}
+
+/* --------------------------------- Roadmap --------------------------------- */
+const ROADMAP = [
+  { name: "Eye Tracking", desc: "Rastreamento ocular para expressões ainda mais realistas." },
+  { name: "Hand Tracking", desc: "Captura de movimento das mãos sem controles." },
+  { name: "Peças", desc: "Componentes e peças de reposição avulsas." },
+  { name: "Acessórios", desc: "Straps, cases e itens complementares." },
+  { name: "Moda", desc: "Vestuário e itens de estilo Aphex Lab." }
+];
+
+function renderRoadmap(container){
+  if (!container) return;
+  container.innerHTML = ROADMAP.map((r, i) => `
+    <div class="roadmap-card reveal" style="--d:${i % 4}">
+      <span class="roadmap-badge">Em breve</span>
+      <h4>${r.name}</h4>
+      <p>${r.desc}</p>
+    </div>
+  `).join("");
+}
+
 /* -------------------------------- Product cards -------------------------------- */
 function productCard(p){
   const cover = imgPath(p, p.images[0]);
