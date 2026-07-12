@@ -72,11 +72,17 @@
       <div class="product-info reveal" style="--d:1">
         <span class="cat">${product.category}</span>
         <h1>${product.name}</h1>
+
+        ${product.oldPrice ? `<div class="price-cheio-line"><span class="price-old">${formatBRL(product.oldPrice)}</span> preço original</div>` : ""}
         <div class="price-block">
-          ${product.oldPrice ? `<span class="price-old" style="font-size:15px;">${formatBRL(product.oldPrice)}</span>` : ""}
-          <span class="price">${formatBRL(product.price)}</span>
+          <span class="price">${formatBRL(pixPrice(product.price))}</span>
+          <span class="pix-badge">10% OFF NO PIX</span>
         </div>
-        <div class="installments">ou ${installmentText(product.price)} sem juros</div>
+        <div class="price-cheio-line">de <span class="price-old">${formatBRL(product.price)}</span> sem desconto</div>
+        <div class="installments">
+          ou até <strong>10x de ${formatBRL(installments10x(product.price))}</strong> sem juros<br>
+          ou 12x de ${formatBRL(installments12x(product.price))} com juros
+        </div>
 
         ${product.stockWarning ? `<div class="stock-alert">⚠ Atenção, última peça!</div>` : ""}
 
@@ -103,8 +109,8 @@
         </div>
 
         <div class="trust-row">
-          <div>${ICONS.truck}<span>Envio para todo o Brasil</span></div>
-          <div>${ICONS.shield}<span>Garantia Aphex Lab</span></div>
+          <div>${ICONS.truck}<span>Envio em até 48h úteis</span></div>
+          <div>${ICONS.shield}<span>Garantia de 1 ano</span></div>
           <div>${ICONS.headset}<span>Setup incluso no suporte</span></div>
         </div>
       </div>

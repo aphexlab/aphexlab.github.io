@@ -169,15 +169,17 @@ function formatBRL(value){
   return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
-function installmentText(price){
-  const n = 12;
-  const per = price / n;
-  return `${n}x de ${formatBRL(per)}`;
-}
+/* Política comercial Aphex Lab: 10% OFF à vista no Pix, 10x sem juros
+   ou 12x com um acréscimo total de 3% sobre o preço cheio. */
+const PIX_DISCOUNT = 0.10;
+const INSTALLMENT_12X_MARKUP = 0.03;
+
+function pixPrice(price){ return price * (1 - PIX_DISCOUNT); }
+function installments10x(price){ return price / 10; }
+function installments12x(price){ return (price * (1 + INSTALLMENT_12X_MARKUP)) / 12; }
 
 function imgPath(product, file){
-  const folder = product.line === "Mouthtracker" ? "trackers" : "trackers";
-  return `assets/img/${folder}/${file}`;
+  return `assets/img/trackers/${file}`;
 }
 
 function getProductBySlug(slug){

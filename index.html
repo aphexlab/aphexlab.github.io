@@ -33,6 +33,10 @@
   </div>
 </section>
 
+<div class="trust-strip">
+  <div class="container trust-strip-inner" id="trust-strip-inner"></div>
+</div>
+
 <section>
   <div class="container about-grid">
     <div class="reveal">
@@ -49,6 +53,14 @@
 
 <section class="section-alt">
   <div class="container">
+    <div class="section-title reveal">Como Funciona</div>
+    <div class="how-grid" id="how-grid"></div>
+    <p class="how-note reveal" style="--d:4">Kit mínimo recomendado: <strong>6 trackers</strong> (peito, cintura, duas coxas e dois tornozelos). Kits de <strong>8</strong> e <strong>10 trackers</strong> também disponíveis para mais precisão.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
     <div class="section-title reveal">O que nos move</div>
     <div class="values-row">
       <div class="value-card">
@@ -58,10 +70,19 @@
   </div>
 </section>
 
-<section>
+<section class="section-alt">
   <div class="container">
     <div class="section-title reveal">Produtos em Destaque</div>
     <div class="products-grid" id="featured-grid"></div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title reveal">Compatibilidade</div>
+    <p class="reveal" style="--d:0; color:var(--gray); max-width:640px;">Os trackers Aphex Lab rodam o servidor <strong style="color:var(--white)">SlimeVR</strong> (open source), o que garante compatibilidade com todo o ecossistema já usado pela comunidade de full body tracking.</p>
+    <div id="compat-blocks"></div>
+    <p style="color:var(--gray); font-size:12px; margin-top:28px;">* Compatibilidade depende da versão do SlimeVR e de cada jogo/aplicativo. Alguns títulos usam mods de terceiros para suportar rastreamento corporal completo.</p>
   </div>
 </section>
 
@@ -87,6 +108,85 @@
 <script src="assets/js/main.js"></script>
 <script>
   mountLayout("index.html");
+
+  document.getElementById("trust-strip-inner").innerHTML = `
+    <div class="trust-strip-item">${ICONS.truck}<span>Envio em até 48h úteis</span></div>
+    <div class="trust-strip-item">${ICONS.shield}<span>Garantia de 1 ano</span></div>
+    <div class="trust-strip-item">${ICONS.percent}<span>10% OFF pagando no Pix</span></div>
+    <div class="trust-strip-item">${ICONS.headset}<span>Suporte completo de setup</span></div>
+  `;
+
+  document.getElementById("how-grid").innerHTML = `
+    <div class="how-step reveal" style="--d:0">
+      <span class="how-num">01</span>
+      ${ICONS.chip}
+      <h4>Sensor no seu corpo</h4>
+      <p>Cada tracker tem um sensor IMU interno que mede a própria rotação — sem câmeras, sem base station, sem linha de visada.</p>
+    </div>
+    <div class="how-step reveal" style="--d:1">
+      <span class="how-num">02</span>
+      ${ICONS.wifi}
+      <h4>Envio via Wi-Fi</h4>
+      <p>Os dados de cada tracker são transmitidos por Wi-Fi 2.4GHz direto para o servidor SlimeVR, em tempo real.</p>
+    </div>
+    <div class="how-step reveal" style="--d:2">
+      <span class="how-num">03</span>
+      ${ICONS.headset}
+      <h4>PC, celular ou headset</h4>
+      <p>O servidor SlimeVR roda no seu PC, no celular ou dentro do próprio headset — sem cabos extras e sem PC obrigatório.</p>
+    </div>
+    <div class="how-step reveal" style="--d:3">
+      <span class="how-num">04</span>
+      ${ICONS.target}
+      <h4>Seu avatar se move com você</h4>
+      <p>Peito, cintura, coxas e tornozelos ganham vida no VRChat, SteamVR e em qualquer app compatível com SlimeVR.</p>
+    </div>
+  `;
+
+  document.getElementById("compat-blocks").innerHTML = `
+    <div class="compat-block reveal" style="--d:1">
+      <h4>Software e Jogos</h4>
+      <div class="pill-row">
+        <span class="pill">SteamVR</span>
+        <span class="pill">VRChat</span>
+        <span class="pill">Resonite</span>
+        <span class="pill">ChilloutVR</span>
+        <span class="pill">LIV</span>
+        <span class="pill pill-mod">Beat Saber · mod</span>
+        <span class="pill pill-mod">Blade &amp; Sorcery · mod</span>
+        <span class="pill pill-mod">Boneworks · mod</span>
+      </div>
+    </div>
+    <div class="compat-block reveal" style="--d:2">
+      <h4>Uso Standalone (sem PC)</h4>
+      <div class="pill-row">
+        <span class="pill">Meta Quest 2</span>
+        <span class="pill">Meta Quest 3 / 3S</span>
+        <span class="pill">Meta Quest Pro</span>
+        <span class="pill">Pico 4 / 4 Pro</span>
+      </div>
+    </div>
+    <div class="compat-block reveal" style="--d:3">
+      <h4>VTubing e Motion Capture</h4>
+      <div class="pill-row">
+        <span class="pill">OSC</span>
+        <span class="pill">VMC</span>
+        <span class="pill">Blender</span>
+        <span class="pill">Unity</span>
+        <span class="pill">Unreal Engine</span>
+        <span class="pill">Godot</span>
+      </div>
+    </div>
+    <div class="compat-block reveal" style="--d:4">
+      <h4>Sistemas Operacionais</h4>
+      <div class="pill-row">
+        <span class="pill">Windows</span>
+        <span class="pill">Linux</span>
+        <span class="pill">macOS</span>
+        <span class="pill">Android</span>
+      </div>
+    </div>
+  `;
 
   document.querySelector(".values-row").innerHTML = `
     <div class="value-card reveal" style="--d:0">

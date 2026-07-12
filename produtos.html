@@ -61,6 +61,14 @@
   </div>
 </section>
 
+<section class="section-alt">
+  <div class="container">
+    <div class="section-title reveal">Tabela de Preços Completa</div>
+    <p class="reveal" style="color:var(--gray); max-width:640px; margin-bottom:32px;">Parcelamento em até 12x no cartão (10x sem juros) e 10% de desconto à vista no Pix. Fabricados com pronta entrega em até 48h úteis.</p>
+    <div id="pricing-tables"></div>
+  </div>
+</section>
+
 <div id="site-footer"></div>
 
 <script src="assets/js/products.js"></script>
@@ -120,6 +128,37 @@
 
   applyUrlParams();
   render();
+
+  function buildPricingTable(lineName, items){
+    const rows = items.map(p => `
+      <tr>
+        <td>${p.trackers > 1 ? p.trackers + " Trackers" : p.name}</td>
+        <td>${formatBRL(pixPrice(p.price))}</td>
+        <td>${formatBRL(p.price)}</td>
+        <td>${formatBRL(installments10x(p.price))}</td>
+        <td>${formatBRL(installments12x(p.price))}</td>
+      </tr>
+    `).join("");
+    return `
+      <div class="pricing-table-block reveal">
+        <h3>${lineName}</h3>
+        <div class="table-scroll">
+          <table class="pricing-table">
+            <thead>
+              <tr><th>Kit</th><th>Pix (10% OFF)</th><th>Preço cheio</th><th>10x sem juros</th><th>12x com juros</th></tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  }
+
+  const lines = [...new Set(PRODUCTS.map(p => p.line))];
+  document.getElementById("pricing-tables").innerHTML = lines
+    .map(line => buildPricingTable(line, PRODUCTS.filter(p => p.line === line)))
+    .join("");
+  refreshReveal();
 </script>
 </body>
 </html>

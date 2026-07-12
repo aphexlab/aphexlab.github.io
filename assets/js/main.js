@@ -13,7 +13,10 @@ const ICONS = {
   flask: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v6l-5.5 9.5A1.6 1.6 0 0 0 6 21h12a1.6 1.6 0 0 0 1.5-2.5L14 9V3"/><path d="M7.5 15h9"/></svg>`,
   truck: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="6" width="14" height="11"/><path d="M15 10h4l3 3v4h-7z"/><circle cx="6" cy="19" r="1.6"/><circle cx="17.5" cy="19" r="1.6"/></svg>`,
   shield: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/></svg>`,
-  headset: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 13a8 8 0 0 1 16 0"/><rect x="2" y="13" width="5" height="7" rx="1.5"/><rect x="17" y="13" width="5" height="7" rx="1.5"/></svg>`
+  headset: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 13a8 8 0 0 1 16 0"/><rect x="2" y="13" width="5" height="7" rx="1.5"/><rect x="17" y="13" width="5" height="7" rx="1.5"/></svg>`,
+  percent: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M19 5 5 19"/><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>`,
+  wifi: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8.5a17 17 0 0 1 20 0"/><path d="M5.5 12.5a12 12 0 0 1 13 0"/><path d="M9 16.5a7 7 0 0 1 6 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>`,
+  chevronDown: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>`
 };
 
 const CART_KEY = "aphexlab_cart";
@@ -96,6 +99,7 @@ function renderCartDrawer(){
   `).join("");
   footEl.innerHTML = `
     <div class="cart-total"><span>Total</span><span>${formatBRL(cartTotal())}</span></div>
+    <div class="cart-pix-note">ou ${formatBRL(pixPrice(cartTotal()))} pagando no Pix (10% OFF)</div>
     <button class="btn btn-primary btn-block">Finalizar Compra</button>
   `;
   itemsEl.querySelectorAll("[data-remove]").forEach(btn => {
@@ -121,6 +125,7 @@ function siteHeader(active){
         <ul>
           <li>${link("index.html","Início")}</li>
           <li>${link("produtos.html","Produtos")}</li>
+          <li>${link("faq.html","FAQ")}</li>
           <li>${link("contato.html","Contato")}</li>
         </ul>
       </nav>
@@ -137,6 +142,7 @@ function siteHeader(active){
       <ul>
         <li>${link("index.html","Início")}</li>
         <li>${link("produtos.html","Produtos")}</li>
+        <li>${link("faq.html","FAQ")}</li>
         <li>${link("contato.html","Contato")}</li>
       </ul>
     </nav>
@@ -191,9 +197,9 @@ function siteFooter(){
         <div>
           <h4>Suporte</h4>
           <ul>
+            <li><a href="faq.html">Perguntas Frequentes</a></li>
             <li><a href="contato.html">Fale conosco</a></li>
             <li><a href="contato.html">Configuração e Setup</a></li>
-            <li><a href="contato.html">Trocas e Garantia</a></li>
           </ul>
         </div>
       </div>
@@ -284,8 +290,9 @@ function productCard(p){
       <span class="name">${p.name}</span>
       <div class="price-row">
         ${p.oldPrice ? `<span class="price-old">${formatBRL(p.oldPrice)}</span>` : ""}
-        <span class="price">${formatBRL(p.price)}</span>
+        <span class="price">${formatBRL(pixPrice(p.price))}</span>
       </div>
+      <div class="price-note">no Pix · ou ${formatBRL(p.price)} em até 10x</div>
     </div>
   </a>`;
 }

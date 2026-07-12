@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perguntas Frequentes — Aphex Lab</title>
+<meta name="description" content="Tire suas dúvidas sobre os trackers Aphex Lab: como funciona o rastreamento sem câmeras, compatibilidade, drift, entrega e garantia.">
+<link rel="icon" href="assets/img/brand/logo-dark-bg.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<div class="page-hero">
+  <div class="container reveal">
+    <div class="breadcrumb"><a href="index.html">Início</a><span class="sep">·</span><span class="current">FAQ</span></div>
+    <h1>Perguntas Frequentes</h1>
+    <p>Tudo que você precisa saber antes de comprar um sistema de full body tracking Aphex Lab.</p>
+  </div>
+</div>
+
+<section class="section-tight">
+  <div class="container" style="max-width:840px;">
+
+    <div class="faq-group reveal">
+      <h3>Como Funciona</h3>
+
+      <details class="faq-item">
+        <summary><span>Preciso de câmeras ou base stations?</span><span class="chevron"></span></summary>
+        <p class="faq-answer">Não. Cada tracker Aphex Lab tem um sensor IMU interno que mede a própria rotação e envia os dados via Wi-Fi para o servidor SlimeVR, rodando no seu PC, celular ou dentro do headset. Não há necessidade de câmeras externas nem linha de visada — funciona até embaixo do cobertor.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>O que é "drift" e como eu corrijo?</span><span class="chevron"></span></summary>
+        <p class="faq-answer">Drift é o pequeno desvio de precisão que qualquer sensor IMU acumula com o tempo de uso — é uma característica de qualquer tracker sem câmera ou base station, não só dos nossos. O app do SlimeVR tem uma recalibração rápida, de poucos segundos, para corrigir o drift sempre que notar que o rastreamento saiu do lugar.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>Quantos trackers eu preciso no mínimo?</span><span class="chevron"></span></summary>
+        <p class="faq-answer">O kit mínimo recomendado tem 6 trackers: peito, cintura, duas coxas e dois tornozelos. Também vendemos kits com 8 e 10 trackers para quem quer mais precisão, cobrindo pontos extras como pés e cotovelos.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>Que sistema operacional e rede eu preciso?</span><span class="chevron"></span></summary>
+        <p class="faq-answer">O servidor SlimeVR roda em Windows, Linux e macOS (via PC) ou Android (modo standalone). Os trackers se conectam por Wi-Fi 2.4GHz e carregam via USB-C.</p>
+      </details>
+    </div>
+
+    <div class="faq-group reveal">
+      <h3>Compatibilidade e Uso</h3>
+
+      <details class="faq-item">
+        <summary><span>Quais headsets funcionam com os trackers Aphex Lab?</span><span class="chevron"></span></summary>
+        <p class="faq-answer">Qualquer headset compatível com SteamVR via PC. No modo standalone (sem PC), funciona com Meta Quest 2, Quest 3 / 3S, Quest Pro e Pico 4 / 4 Pro, rodando o app do SlimeVR direto no headset.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>Consigo usar sem PC?</span><span class="chevron"></span></summary>
+        <p class="faq-answer">Sim. No modo standalone, o servidor SlimeVR roda direto no headset ou no celular, sem precisar de computador.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>Funciona para VTubing?</span><span class="chevron"></span></summary>
+        <p class="faq-answer">Sim. O SlimeVR exporta os dados de rastreamento via OSC e VMC, compatíveis com os principais softwares de VTubing do mercado.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>Funciona para motion capture (Blender, Unity, Unreal)?</span><span class="chevron"></span></summary>
+        <p class="faq-answer">Sim. Os mesmos dados de rastreamento podem alimentar essas ferramentas através das integrações do SlimeVR, úteis tanto para animação quanto para prototipagem em tempo real.</p>
+      </details>
+    </div>
+
+    <div class="faq-group reveal">
+      <h3>Compra, Entrega e Garantia</h3>
+
+      <details class="faq-item">
+        <summary><span>Qual o prazo de entrega e a garantia?</span><span class="chevron"></span></summary>
+        <p class="faq-answer">Despachamos em até 48h úteis para todo o Brasil. Todos os kits saem de fábrica com 1 ano de garantia.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>Tem desconto para pagamento à vista?</span><span class="chevron"></span></summary>
+        <p class="faq-answer">Sim: 10% de desconto pagando no Pix, além de parcelamento em até 10x sem juros ou 12x com juros no cartão. Os valores aparecem em cada página de produto.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>Como funciona o suporte de configuração?</span><span class="chevron"></span></summary>
+        <p class="faq-answer">Nosso suporte acompanha você do unboxing até a primeira calibração no SteamVR / SlimeVR, por e-mail em <strong>suporte@aphexlab.com</strong>. Respondemos em até 1 dia útil.</p>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/products.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  mountLayout("faq.html");
+  document.querySelectorAll(".faq-item .chevron").forEach(el => { el.innerHTML = ICONS.chevronDown; });
+</script>
+</body>
+</html>
