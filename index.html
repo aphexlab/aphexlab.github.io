@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aphex Lab — Laboratório de Hardware</title>
-<meta name="description" content="Aphex Lab é um laboratório de hardware especializado em tecnologia de captura de movimento (mocap) e dispositivos inovadores para realidade virtual.">
+<meta name="description" content="Aphex Lab é um laboratório de hardware que desenvolve tecnologias de imersão para realidade virtual — de captura de movimento (mocap) a novos dispositivos interativos.">
 <link rel="icon" href="assets/img/brand/logo-dark-bg.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -19,14 +19,12 @@
   <div class="hero-decor" aria-hidden="true"></div>
   <span class="hero-ring ring-2" aria-hidden="true"></span>
   <span class="hero-ring ring-1" aria-hidden="true"></span>
+  <div class="hero-particles" id="hero-particles" aria-hidden="true"></div>
   <div class="container hero-content">
-    <div class="hero-badge reveal">
-      <img src="assets/img/brand/logo-dark-bg.png" alt="Aphex Lab">
-    </div>
-    <div class="eyebrow reveal" style="--d:1">Laboratório de Hardware</div>
-    <h1 class="reveal" style="--d:2">Performance real no mundo físico, <span class="accent">levada ao mundo virtual.</span></h1>
-    <p class="reveal" style="--d:3">Sistemas de rastreamento corporal (full body tracking) e captura de expressões faciais para realidade virtual. Engenharia, precisão e design em cada tracker.</p>
-    <div class="hero-actions reveal" style="--d:4">
+    <div class="eyebrow reveal">Laboratório de Hardware e Tecnologias Imersivas</div>
+    <h1 class="reveal" style="--d:1">Performance real no mundo físico, <span class="accent">levada ao mundo virtual.</span></h1>
+    <p class="reveal" style="--d:2">Sistemas de rastreamento corporal (full body tracking) e captura de expressões faciais para realidade virtual. Engenharia, precisão e design em cada tracker.</p>
+    <div class="hero-actions reveal" style="--d:3">
       <a href="produtos.html" class="btn btn-primary">Ver Produtos</a>
       <a href="contato.html" class="btn btn-outline">Falar com o Suporte</a>
     </div>
@@ -43,6 +41,7 @@
       <div class="section-title">Sobre a Marca</div>
       <p>A Aphex Lab é um laboratório de hardware especializado em tecnologia de captura de movimento (mocap) e dispositivos inovadores para criadores, desenvolvedores e entusiastas.</p>
       <p>Unimos engenharia, precisão e design para entregar performance real no mundo físico — do chip ao case impresso, cada tracker é pensado para desaparecer no seu corpo e aparecer no seu avatar.</p>
+      <p>Full body tracking é só o nosso primeiro capítulo: somos um laboratório dedicado a criar hardware e tecnologias de imersão para a realidade virtual e experiências interativas como um todo.</p>
       <a href="produtos.html" class="btn btn-outline">Conhecer a Linha Full Body</a>
     </div>
     <div class="reveal" style="--d:1">
@@ -132,6 +131,7 @@
 <script src="assets/js/main.js"></script>
 <script>
   mountLayout("index.html");
+  mountHeroParticles(document.getElementById("hero-particles"));
 
   document.getElementById("trust-strip-inner").innerHTML = `
     <div class="trust-strip-item">${ICONS.truck}<span>Envio em até 48h úteis</span></div>

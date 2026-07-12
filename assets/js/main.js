@@ -182,7 +182,7 @@ function siteFooter(){
       <div class="footer-grid">
         <div class="footer-about">
           <img src="assets/img/brand/logo-dark-bg.png" alt="Aphex Lab" class="footer-logo">
-          <p>Laboratório de hardware especializado em tecnologia de captura de movimento (mocap) e dispositivos inovadores para criadores, desenvolvedores e entusiastas de realidade virtual.</p>
+          <p>Laboratório de hardware e tecnologias de imersão para realidade virtual — de captura de movimento (mocap) a novos dispositivos interativos, para criadores, desenvolvedores e entusiastas.</p>
         </div>
         <div>
           <h4>Navegação</h4>
@@ -283,6 +283,21 @@ function refreshReveal(){
   document.querySelectorAll(".reveal:not(.is-visible)").forEach(el => _revealObserver.observe(el));
 }
 
+/* -------------------------------- Hero particles -------------------------------- */
+function mountHeroParticles(container, count){
+  if (!container) return;
+  const n = count || 14;
+  let html = "";
+  for (let i = 0; i < n; i++){
+    const left = Math.round(Math.random() * 100);
+    const duration = (9 + Math.random() * 7).toFixed(1);
+    const delay = (-Math.random() * 16).toFixed(1);
+    const dx = Math.round((Math.random() - 0.5) * 80);
+    html += `<span class="hero-particle" style="left:${left}%; --dx:${dx}px; animation-duration:${duration}s; animation-delay:${delay}s;"></span>`;
+  }
+  container.innerHTML = html;
+}
+
 /* ------------------------------ Compatibility tiles ------------------------------ */
 /* Styled gradient tiles instead of official box art — avoids using third-party
    game artwork/trademarks we don't have rights to publish. */
@@ -298,7 +313,7 @@ const COMPAT_GAMES = [
   { name: "Final Soccer VR" },
   { name: "Mocap Fusion VR" },
   { name: "Beat Saber", mod: true },
-  { name: "Blade & Sorcery", mod: true },
+  { name: "Blade & Sorcery" },
   { name: "Boneworks", mod: true },
   { name: "Minecraft", mod: true }
 ];
@@ -321,7 +336,7 @@ function renderGameTiles(container){
   }).join("");
 }
 
-const PRO_SOFTWARE = ["Blender", "Unity", "Unreal Engine", "Godot", "VMC Protocol"];
+const PRO_SOFTWARE = ["Blender", "Unity", "Unreal Engine", "Godot", "VMC Protocol", "VaM · Virt-A-Mate"];
 
 function renderWordmarks(container){
   if (!container) return;
