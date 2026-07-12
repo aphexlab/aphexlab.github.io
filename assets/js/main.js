@@ -299,40 +299,30 @@ function mountHeroParticles(container, count){
 }
 
 /* ------------------------------ Compatibility tiles ------------------------------ */
-/* Styled gradient tiles instead of official box art — avoids using third-party
-   game artwork/trademarks we don't have rights to publish. */
 const COMPAT_GAMES = [
-  { name: "VRChat" },
-  { name: "Resonite" },
-  { name: "ChilloutVR" },
-  { name: "LIV" },
-  { name: "Dance Dash" },
-  { name: "Dragon Fist: VR Kung Fu" },
-  { name: "Zenith: The Last City" },
-  { name: "Final Soccer VR" },
-  { name: "Mocap Fusion VR" },
-  { name: "Beat Saber", mod: true },
-  { name: "Blade & Sorcery" },
-  { name: "Boneworks", mod: true },
-  { name: "Minecraft", mod: true }
-];
-
-const COMPAT_PALETTE = [
-  ["#0070FF", "#001433"], ["#00C2A8", "#00291F"], ["#7C3AED", "#170733"], ["#FF3D71", "#2B0512"],
-  ["#F5A623", "#2B1B00"], ["#2ED1FF", "#001A29"], ["#8CE00A", "#122400"], ["#FF6B35", "#2B0F00"]
+  { name: "VRChat", img: "vrchat.webp" },
+  { name: "Resonite", img: "resonite.webp" },
+  { name: "ChilloutVR", img: "chilloutvr.webp" },
+  { name: "LIV", img: "liv.jpg" },
+  { name: "Dance Dash", img: "dance-dash.webp" },
+  { name: "Dragon Fist: VR Kung Fu", img: "dragon-fist.webp" },
+  { name: "Zenith: The Last City", img: "zenith.webp" },
+  { name: "Final Soccer VR", img: "final-soccer-vr.webp" },
+  { name: "Mocap Fusion VR", img: "mocap-fusion-vr.jpg" },
+  { name: "Beat Saber", img: "beat-saber.jpg", mod: true },
+  { name: "Blade & Sorcery", img: "blade-and-sorcery.webp" },
+  { name: "Boneworks", img: "boneworks.webp", mod: true },
+  { name: "Minecraft", img: "minecraft.jpg", mod: true }
 ];
 
 function renderGameTiles(container){
   if (!container) return;
-  container.innerHTML = COMPAT_GAMES.map((g, i) => {
-    const [c1, c2] = COMPAT_PALETTE[i % COMPAT_PALETTE.length];
-    return `
-      <div class="game-tile reveal" style="--d:${i % 6}; background:linear-gradient(160deg, ${c1}, ${c2});">
-        ${g.mod ? `<span class="game-tile-badge">MOD</span>` : ""}
-        <span class="game-tile-name">${g.name}</span>
-      </div>
-    `;
-  }).join("");
+  container.innerHTML = COMPAT_GAMES.map((g, i) => `
+    <div class="game-tile reveal" style="--d:${i % 6}; background-image:url('assets/img/games/${g.img}');">
+      ${g.mod ? `<span class="game-tile-badge">MOD</span>` : ""}
+      <span class="game-tile-name">${g.name}</span>
+    </div>
+  `).join("");
 }
 
 const PRO_SOFTWARE = ["Blender", "Unity", "Unreal Engine", "Godot", "VMC Protocol", "VaM · Virt-A-Mate", "Second Life"];
